@@ -1,5 +1,25 @@
 import { useState } from 'react';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonLabel, IonInput } from '@ionic/react';
+import { 
+  IonPage, 
+  IonHeader, 
+  IonToolbar, 
+  IonTitle, 
+  IonContent, 
+  IonButton, 
+  IonItem, 
+  IonLabel, 
+  IonInput,
+  IonIcon 
+} from '@ionic/react';
+import {
+  footballOutline,
+} from "ionicons/icons";
+import { 
+  mailOutline, 
+  lockClosedOutline, 
+  logInOutline, 
+  personAddOutline 
+} from 'ionicons/icons';
 import './AuthPage.css';
 
 const AuthPage: React.FC = () => {
@@ -24,15 +44,27 @@ const AuthPage: React.FC = () => {
 
   return (
     <IonPage className="auth-page">
-      <IonHeader>
-        <IonToolbar color="primary">
-          <IonTitle className="ion-text-center">
-            {showLogin ? 'Iniciar Sesión' : 'Crear Cuenta'}
+      <IonHeader className="ion-no-border">
+        <IonToolbar color="transparent">
+          <IonTitle className="ion-text-center custom-title">
+            {showLogin ? 'Bienvenido de Vuelta' : 'Únete a Nosotros'}
           </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
         <div className="auth-container">
+          <div className="logo-container">
+            <div className="logo-icon-container">
+              <IonIcon icon={footballOutline} className="logo-icon" />
+            </div>
+            <h1 className="brand-title">
+              FCnoLimit
+            </h1>
+            <p className="brand-subtitle">
+              Tu camino hacia el éxito deportivo
+            </p>
+          </div>
+          
           <div className="auth-toggle-buttons">
             <IonButton 
               fill={showLogin ? 'solid' : 'outline'} 
@@ -52,59 +84,91 @@ const AuthPage: React.FC = () => {
           
           <div className="auth-form">
             {showLogin ? (
-              <form onSubmit={e => { e.preventDefault(); handleLogin(); }}>
-                <IonItem>
-                  <IonLabel position="floating">Correo Electrónico</IonLabel>
+              <form onSubmit={e => { e.preventDefault(); handleLogin(); }} className="slide-in">
+                <IonItem className="custom-input">
+                  <IonLabel position="floating">
+                    <IonIcon icon={mailOutline} />
+                    Correo Electrónico
+                  </IonLabel>
                   <IonInput
                     type="email"
                     value={email}
                     onIonChange={e => setEmail(e.detail.value!)}
                     required
+                    className="custom-input-field"
+                    placeholder="ejemplo@correo.com"
                   />
                 </IonItem>
-                <IonItem>
-                  <IonLabel position="floating">Contraseña</IonLabel>
+                
+                <IonItem className="custom-input">
+                  <IonLabel position="floating">
+                    <IonIcon icon={lockClosedOutline} />
+                    Contraseña
+                  </IonLabel>
                   <IonInput
                     type="password"
                     value={password}
                     onIonChange={e => setPassword(e.detail.value!)}
                     required
+                    className="custom-input-field"
+                    placeholder="••••••••"
                   />
                 </IonItem>
-                <IonButton expand="block" type="submit" color="secondary">
+
+                <IonButton expand="block" type="submit" className="submit-button">
+                  <IonIcon icon={logInOutline} slot="start" />
                   Iniciar Sesión
                 </IonButton>
               </form>
             ) : (
-              <form onSubmit={e => { e.preventDefault(); handleRegister(); }}>
-                <IonItem>
-                  <IonLabel position="floating">Correo Electrónico</IonLabel>
+              <form onSubmit={e => { e.preventDefault(); handleRegister(); }} className="slide-in">
+                <IonItem className="custom-input">
+                  <IonLabel position="floating">
+                    <IonIcon icon={mailOutline} />
+                    Correo Electrónico
+                  </IonLabel>
                   <IonInput
                     type="email"
                     value={registerEmail}
                     onIonChange={e => setRegisterEmail(e.detail.value!)}
                     required
+                    className="custom-input-field"
+                    placeholder="ejemplo@correo.com"
                   />
                 </IonItem>
-                <IonItem>
-                  <IonLabel position="floating">Contraseña</IonLabel>
+                
+                <IonItem className="custom-input">
+                  <IonLabel position="floating">
+                    <IonIcon icon={lockClosedOutline} />
+                    Contraseña
+                  </IonLabel>
                   <IonInput
                     type="password"
                     value={registerPassword}
                     onIonChange={e => setRegisterPassword(e.detail.value!)}
                     required
+                    className="custom-input-field"
+                    placeholder="••••••••"
                   />
                 </IonItem>
-                <IonItem>
-                  <IonLabel position="floating">Confirmar Contraseña</IonLabel>
+                
+                <IonItem className="custom-input">
+                  <IonLabel position="floating">
+                    <IonIcon icon={lockClosedOutline} />
+                    Confirmar Contraseña
+                  </IonLabel>
                   <IonInput
                     type="password"
                     value={registerConfirm}
                     onIonChange={e => setRegisterConfirm(e.detail.value!)}
                     required
+                    className="custom-input-field"
+                    placeholder="••••••••"
                   />
                 </IonItem>
-                <IonButton expand="block" type="submit" color="secondary">
+                
+                <IonButton expand="block" type="submit" className="submit-button">
+                  <IonIcon icon={personAddOutline} slot="start" />
                   Crear Cuenta
                 </IonButton>
               </form>

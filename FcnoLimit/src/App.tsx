@@ -19,6 +19,7 @@ import ComparativasPage from './pages/ComparativasPage';
 import PartidosPage from './pages/PartidosPage';      
 import InicioPage from './pages/InicioPage';
 import AuthPage from './pages/AuthPage';
+import NoticiasPage from './pages/NoticiasPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Core CSS required for Ionic components to work properly */
@@ -78,6 +79,7 @@ const App: React.FC = () => (
       <Route exact path="/comparativas">
         <ComparativasPage />
       </Route>
+      <Route exact path="/noticias" component={NoticiasPage} />
       <Route exact path="/">
         <Redirect to="/inicio" />
       </Route>

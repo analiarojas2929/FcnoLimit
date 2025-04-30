@@ -15,6 +15,15 @@
   letter-spacing: 1px;
 }
 
+.navbar-header {
+  display: flex;
+  align-items: center;
+  padding-right: 2rem;
+  border-right: 1px ;
+  margin-right: 2rem;
+  height: 100%;
+}
+
 .nav-item {
   margin: 0 0.3rem;
   position: relative;
@@ -42,12 +51,12 @@
   box-shadow: 0 4px 15px rgba(255, 139, 61, 0.3);
 }
 
-/* Estilo para el menú móvil */
+/* Estilos para el botón hamburguesa */
 .navbar-toggler {
   border: none;
   padding: 0.5rem;
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: transparent;
 }
 
 .navbar-toggler:focus {
@@ -56,11 +65,22 @@
 }
 
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+/* Efecto hover para el botón hamburguesa */
+.navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Animación para el menú desplegable */
 .navbar-collapse {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
   transition: all 0.3s ease;
 }
 
@@ -71,13 +91,27 @@
     margin: 0.3rem 0;
   }
   
+  .navbar-header {
+    border-right: none;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
   .navbar-collapse {
-    margin: 1rem -1rem -0.8rem;
+    flex-direction: column;
+    align-items: stretch;
     padding: 1rem;
-    border-radius: 0 0 15px 15px;
+    background: var(--ion-color-dark-shade);
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  
+  .navbar-nav {
+    flex-direction: column;
+    padding-left: 0;
+    gap: 0.5rem;
   }
 }
-
 
 .brand-text {
   display: flex;
@@ -183,4 +217,11 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding-left: 1rem;
 }
