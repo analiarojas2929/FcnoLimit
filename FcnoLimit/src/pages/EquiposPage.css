@@ -1,16 +1,92 @@
+/* Importar variables de color */
+@import '../theme/variables.css';
+
 .page-container {
   padding: 32px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+  background: var(--primary-gradient);
+  margin-top: 70px; /* Espacio para el navbar fijo */
 }
 
 .page-container h1 {
-  color: #185a9d;
+  color: var(--neutral-100);
   font-weight: 700;
   margin-bottom: 16px;
+  text-shadow: var(--title-shadow);
 }
 
 .page-container p {
-  color: #333;
+  color: var(--neutral-100);
   font-size: 1.1rem;
+}
+
+.hero-section.equipos-hero {
+  background: var(--hero-gradient);
+  color: var(--neutral-100);
+  padding: 4rem 0 2rem 0;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.teams-section {
+  padding: 2rem 0;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.team-card {
+  background: var(--light-color);
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(33, 147, 176, 0.1);
+}
+
+.team-card:hover {
+  transform: var(--hover-transform);
+  box-shadow: 0 16px 40px rgba(33, 147, 176, 0.25);
+}
+
+.team-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para los títulos de equipos */
+.team-card h3 {
+  color: var(--dark-color);
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+/* Estilos para la información del equipo */
+.team-info {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 16px;
+  }
+  
+  .hero-section.equipos-hero {
+    padding: 3rem 1rem 1.5rem;
+  }
+  
+  .teams-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
 }

@@ -9,12 +9,11 @@ import {
   IonItem, 
   IonLabel, 
   IonInput,
-  IonIcon 
+  IonIcon,
+  IonText
 } from '@ionic/react';
 import {
   footballOutline,
-} from "ionicons/icons";
-import { 
   mailOutline, 
   lockClosedOutline, 
   logInOutline, 
@@ -29,17 +28,55 @@ const AuthPage: React.FC = () => {
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const [registerConfirm, setRegisterConfirm] = useState('');
+  const [error, setError] = useState('');
+  const [registerError, setRegisterError] = useState('');
+  const [registerSuccess, setRegisterSuccess] = useState('');
 
-  const handleLogin = () => {
-    alert('Inicio de sesión exitoso');
+  // LOGIN REAL
+  const handleLogin = async () => {
+    setError('');
+    try {
+      const res = await fetch('http://localhost:3001/api/usuarios/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ correo: email, contraseña: password })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error de autenticación');
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('usuario', JSON.stringify(data.user));
+      window.location.href = '/inicio'; // Redirige a /jugadores tras login exitoso
+    } catch (err: any) {
+      setError(err.message || 'Correo o contraseña incorrectos');
+    }
   };
 
-  const handleRegister = () => {
+  // REGISTRO REAL
+  const handleRegister = async () => {
+    setRegisterError('');
+    setRegisterSuccess('');
     if (registerPassword !== registerConfirm) {
-      alert('Las contraseñas no coinciden');
+      setRegisterError('Las contraseñas no coinciden');
       return;
     }
-    alert('Cuenta creada exitosamente');
+    try {
+      const res = await fetch('http://localhost:3001/api/usuarios/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre_completo: registerEmail.split('@')[0], // Puedes pedir nombre real si quieres
+          correo: registerEmail,
+          contraseña: registerPassword,
+          rol: 'persona_natural' // O el rol que desees permitir desde el registro
+        })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error al registrar');
+      setRegisterSuccess('Cuenta creada exitosamente. Ahora puedes iniciar sesión.');
+      setShowLogin(true);
+    } catch (err: any) {
+      setRegisterError(err.message || 'Error al registrar');
+    }
   };
 
   return (
@@ -114,7 +151,7 @@ const AuthPage: React.FC = () => {
                     placeholder="••••••••"
                   />
                 </IonItem>
-
+                {error && <IonText color="danger">{error}</IonText>}
                 <IonButton expand="block" type="submit" className="submit-button">
                   <IonIcon icon={logInOutline} slot="start" />
                   Iniciar Sesión
@@ -166,7 +203,8 @@ const AuthPage: React.FC = () => {
                     placeholder="••••••••"
                   />
                 </IonItem>
-                
+                {registerError && <IonText color="danger">{registerError}</IonText>}
+                {registerSuccess && <IonText color="success">{registerSuccess}</IonText>}
                 <IonButton expand="block" type="submit" className="submit-button">
                   <IonIcon icon={personAddOutline} slot="start" />
                   Crear Cuenta

@@ -3,7 +3,6 @@ import { IonPage, IonContent, IonButton, IonIcon } from '@ionic/react';
 import { footballOutline, peopleOutline, trophyOutline, statsChartOutline, arrowForward } from 'ionicons/icons';
 import './InicioPage.css';
 import NavBar from '../components/NavBar';
-import Carousel from '../components/Carousel';
 import CardList from '../components/CardList';
 import Footer from '../components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';

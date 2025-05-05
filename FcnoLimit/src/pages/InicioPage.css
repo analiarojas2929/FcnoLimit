@@ -5,18 +5,17 @@
 
 /* Variables de colores más vibrantes */
 :root {
-  --primary-color: #FF8B3D;
-  --secondary-color: #FFB380;
-  --primary-gradient: linear-gradient(45deg, #FF8B3D, #FF6B00);
-  --accent-color: #FF6B00;
-  --dark-color: #1a1a2e;
-  --light-color: #FFF5EB;
-  --card-shadow: 0 10px 20px rgba(255, 139, 61, 0.15);
-  --hover-transform: translateY(-8px) scale(1.02);
-  --hero-gradient: linear-gradient(135deg, rgba(255, 139, 61, 0.9) 0%, rgba(255, 107, 0, 0.7) 100%);
-  --title-gradient: linear-gradient(45deg, #ffffff, #FFD700);
-  --title-shadow: 2px 2px 0 #FF8B3D,
-                  4px 4px 0 rgba(255, 139, 61, 0.5),
+  --primary-color: #2193b0;
+  --secondary-color: #6dd5ed;
+  --primary-gradient: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+  --accent-color: #0396FF;
+  --dark-color: #1a2942;
+  --light-color: #f5f6fa;
+  --card-shadow: 0 10px 20px rgba(33, 147, 176, 0.15);
+  --hover-transform: translateY(-5px);
+  --hero-gradient: linear-gradient(135deg, rgba(33, 147, 176, 0.9) 0%, rgba(109, 213, 237, 0.7) 100%);
+  --title-shadow: 2px 2px 0 #2193b0,
+                  4px 4px 0 rgba(33, 147, 176, 0.5),
                   -1px -1px 0 #000,
                   1px -1px 0 #000,
                   -1px 1px 0 #000,
@@ -84,7 +83,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  -webkit-text-stroke: 2px #FF8B3D;
+  -webkit-text-stroke: 2px #2193b0;
   opacity: 0.5;
   z-index: -1;
 }
@@ -142,7 +141,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255, 139, 61, 0.3), transparent);
+  background: linear-gradient(120deg, transparent, rgba(33, 147, 176, 0.3), transparent);
   transition: 0.5s;
 }
 
@@ -178,8 +177,8 @@
   }
   50% {
     transform: scale(1.02);
-    text-shadow: 3px 3px 0 #FF8B3D,
-                 6px 6px 0 rgba(255, 139, 61, 0.5),
+    text-shadow: 3px 3px 0 #2193b0,
+                 6px 6px 0 rgba(33, 147, 176, 0.5),
                  -1px -1px 0 #000,
                  1px -1px 0 #000,
                  -1px 1px 0 #000,
@@ -197,10 +196,10 @@
 
 .feature-card {
   background: white;
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 2.5rem;
   box-shadow: var(--card-shadow);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(33, 147, 176, 0.1);
   backdrop-filter: blur(10px);
   transition: all 0.4s ease;
 }
@@ -309,6 +308,7 @@
   overflow: hidden;
   background: white;
   box-shadow: var(--card-shadow);
+  border: 1px solid rgba(33, 147, 176, 0.1);
   transition: all 0.4s ease;
 }
 
@@ -539,15 +539,16 @@
 /* Efectos de hover globales */
 [class*="-card"]:hover {
   transform: var(--hover-transform);
-  box-shadow: 0 15px 30px rgba(255, 139, 61, 0.2);
+  box-shadow: 0 15px 30px rgba(33, 147, 176, 0.2);
 }
 
 /* Media queries actualizados */
 @media (max-width: 768px) {
+
   .main-title {
     font-size: 4.5rem;
-    text-shadow: 1px 1px 0 #FF8B3D,
-                 2px 2px 0 rgba(255, 139, 61, 0.5),
+    text-shadow: 1px 1px 0 #2193b0,
+                 2px 2px 0 rgba(33, 147, 176, 0.5),
                  -1px -1px 0 #000,
                  1px -1px 0 #000,
                  -1px 1px 0 #000,

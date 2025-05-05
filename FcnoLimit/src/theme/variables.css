@@ -1,26 +1,86 @@
+/* For information on how to create your own theme, please see:
+http://ionicframework.com/docs/theming/ */
+/* Tema Principal - Inspirado en Fútbol Profesional */
 :root {
-  --ion-color-primary: #A23E2E;
-  --ion-color-primary-rgb: 162, 62, 46;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-shade: #8f3728;
-  --ion-color-primary-tint: #ab5143;
-
-  --ion-color-secondary: #FF8B3D;
-  --ion-color-secondary-rgb: 255, 139, 61;
-  --ion-color-secondary-contrast: #000000;
-  --ion-color-secondary-shade: #e07a36;
-  --ion-color-secondary-tint: #ff9750;
-
-  --ion-color-tertiary: #2B4C7E;
-  --ion-color-tertiary-rgb: 43, 76, 126;
-  --ion-color-tertiary-contrast: #ffffff;
-  --ion-color-tertiary-shade: #26436f;
-  --ion-color-tertiary-tint: #405e8b;
-
-  --ion-color-success: #4CAF50;
-  --ion-color-warning: #FF8B3D;
-  --ion-color-danger: #C62828;
-  --ion-color-light: #FDF8F5;
-  --ion-color-medium: #E0E0E0;
-  --ion-color-dark: #2D2D2D;
-}
+    /* Colores principales */
+    --primary-dark: #1a2942;    /* Azul marino oscuro - Color base */
+    --primary-main: #2c3e50;    /* Azul acero - Headers */
+    --primary-light: #34495e;   /* Azul grisáceo - Elementos secundarios */
+    
+    /* Colores de acento */
+    --accent-main: #2ecc71;     /* Verde césped - Color de acento principal */
+    --accent-dark: #27ae60;     /* Verde oscuro - Hover estados */
+    --accent-light: #3ed37d;    /* Verde claro - Estados activos */
+  
+    /* Colores de llamada a la acción */
+    --cta-main: #e67e22;        /* Naranja - Botones principales */
+    --cta-dark: #d35400;        /* Naranja oscuro - Hover estados */
+    --cta-light: #f39c12;       /* Naranja claro - Estados activos */
+  
+    /* Colores neutrales */
+    --neutral-100: #f8f9fa;     /* Blanco humo - Fondo claro */
+    --neutral-200: #e9ecef;     /* Gris muy claro - Bordes suaves */
+    --neutral-300: #dee2e6;     /* Gris claro - Bordes */
+    --neutral-400: #ced4da;     /* Gris medio claro - Texto deshabilitado */
+    --neutral-500: #adb5bd;     /* Gris medio - Texto secundario */
+    --neutral-600: #6c757d;     /* Gris medio oscuro - Texto terciario */
+    --neutral-700: #495057;     /* Gris oscuro - Texto principal */
+    --neutral-800: #343a40;     /* Gris muy oscuro - Títulos */
+    --neutral-900: #212529;     /* Casi negro - Énfasis */
+  
+    /* Estados del sistema */
+    --success: #28a745;         /* Verde - Éxito */
+    --warning: #ffc107;         /* Amarillo - Advertencia */
+    --danger: #dc3545;          /* Rojo - Error */
+    --info: #17a2b8;           /* Azul claro - Información */
+  
+    /* Efectos y superposiciones */
+    --overlay-dark: rgba(0, 0, 0, 0.7);
+    --overlay-light: rgba(255, 255, 255, 0.7);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+    /* Espaciado */
+    --spacing-xs: 0.25rem;      /* 4px */
+    --spacing-sm: 0.5rem;       /* 8px */
+    --spacing-md: 1rem;         /* 16px */
+    --spacing-lg: 1.5rem;       /* 24px */
+    --spacing-xl: 2rem;         /* 32px */
+  
+    /* Bordes */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 16px;
+    --border-radius-full: 9999px;
+  
+    /* Tipografía */
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-md: 1rem;       /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+  
+    /* Transiciones */
+    --transition-fast: 150ms ease;
+    --transition-normal: 300ms ease;
+    --transition-slow: 500ms ease;
+  }
+  
+  /* Tema Oscuro - Variación */
+  [data-theme="dark"] {
+    --primary-dark: #0d1829;
+    --primary-main: #1a2942;
+    --primary-light: #2c3e50;
+    
+    --neutral-100: #212529;
+    --neutral-200: #343a40;
+    --neutral-300: #495057;
+    --neutral-400: #6c757d;
+    --neutral-500: #adb5bd;
+    --neutral-600: #ced4da;
+    --neutral-700: #dee2e6;
+    --neutral-800: #e9ecef;
+    --neutral-900: #f8f9fa;
+  }

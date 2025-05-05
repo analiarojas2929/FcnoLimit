@@ -1,86 +1,34 @@
 import React from 'react';
-import { IonCard, IonCardHeader, IonCardContent, IonBadge, IonIcon } from '@ionic/react';
-import { locationOutline, timeOutline, peopleOutline, footballOutline } from 'ionicons/icons';
+import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle } from '@ionic/react';
 import './CardList.css';
 
-interface MatchCard {
+interface CardData {
   id: number;
   title: string;
-  date: string;
-  location: string;
-  level: string;
-  spots: number;
-  image: string;
-  time: string;
-  price: string;
+  subtitle: string;
+  content: string;
 }
 
-const matches: MatchCard[] = [
-  {
-    id: 1,
-    title: "Partido Amistoso",
-    date: "26 Abril",
-    time: "18:00",
-    location: "Cancha Municipal",
-    level: "Intermedio",
-    spots: 4,
-    price: "$5.000",
-    image: "/assets/matches/match1.jpg"
-  },
-  // ...otros partidos
+const mockData: CardData[] = [
+  { id: 1, title: 'Partido 1', subtitle: 'Equipo A vs Equipo B', content: 'Fecha: 2025-04-20' },
+  { id: 2, title: 'Partido 2', subtitle: 'Equipo C vs Equipo D', content: 'Fecha: 2025-04-21' },
+  { id: 3, title: 'Partido 3', subtitle: 'Equipo E vs Equipo F', content: 'Fecha: 2025-04-22' },
 ];
 
-const CardList: React.FC = () => {
-  return (
-    <div className="card-grid">
-      {matches.map((match) => (
-        <IonCard key={match.id} className="match-card">
-          <div className="card-layout">
-            <div 
-              className="card-image" 
-              style={{ backgroundImage: `url(${match.image})` }}
-            >
-              <div className="image-overlay">
-                <IonBadge color="warning" className="spots-badge">
-                  <IonIcon icon={peopleOutline} /> {match.spots} lugares
-                </IonBadge>
-                <IonBadge color="success" className="price-badge">
-                  {match.price}
-                </IonBadge>
-              </div>
-            </div>
-            
-            <div className="card-content">
-              <IonCardHeader>
-                <div className="header-content">
-                  <h3 className="card-title">{match.title}</h3>
-                  <IonBadge color="primary" className="level-badge">
-                    <IonIcon icon={footballOutline} /> {match.level}
-                  </IonBadge>
-                </div>
-              </IonCardHeader>
-              
-              <IonCardContent>
-                <div className="match-details">
-                  <div className="detail-item">
-                    <IonIcon icon={timeOutline} />
-                    <span>{match.date} - {match.time}</span>
-                  </div>
-                  <div className="detail-item">
-                    <IonIcon icon={locationOutline} />
-                    <span>{match.location}</span>
-                  </div>
-                </div>
-                <button className="join-button">
-                  Unirse al partido
-                </button>
-              </IonCardContent>
-            </div>
-          </div>
-        </IonCard>
-      ))}
-    </div>
-  );
-};
+const CardList: React.FC = () => (
+  <div style={{ padding: 16 }}>
+    {mockData.map(card => (
+      <IonCard key={card.id}>
+        <IonCardHeader>
+          <IonCardTitle>{card.title}</IonCardTitle>
+          <IonCardSubtitle>{card.subtitle}</IonCardSubtitle>
+        </IonCardHeader>
+        <IonCardContent>
+          {card.content}
+        </IonCardContent>
+      </IonCard>
+    ))}
+  </div>
+);
 
 export default CardList;

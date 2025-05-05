@@ -2,16 +2,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@500;600&display=swap');
 
 :root {
-  --auth-gradient: linear-gradient(135deg, rgba(255, 139, 61, 0.9) 0%, rgba(255, 107, 0, 0.7) 100%);
-  --form-shadow: 0 10px 25px rgba(255, 139, 61, 0.15);
+  --auth-gradient: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+  --primary-color: #2193b0;
+  --secondary-color: #6dd5ed;
+  --dark-color: #1a2942;
+  --card-shadow: 0 10px 20px rgba(33, 147, 176, 0.15);
+  --hover-transform: translateY(-5px);
+  --title-shadow: 2px 2px 0 #2193b0,
+                  4px 4px 0 rgba(33, 147, 176, 0.5),
+                  -1px -1px 0 #000,
+                  1px -1px 0 #000,
+                  -1px 1px 0 #000,
+                  1px 1px 0 #000;
 }
 
+/* Mejoras en el fondo y contenedor principal */
 .auth-page {
-  background: var(--auth-gradient),
-              url('/assets/soccer-field.jpg');
-  background-size: cover;
-  background-position: center;
-  --background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  --background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  min-height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(33, 147, 176, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(109, 213, 237, 0.15) 0%, transparent 50%),
+    var(--background);
+}
+
+.auth-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/assets/soccer-field.jpg') center/cover;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .custom-title {
@@ -24,13 +57,15 @@
   padding: 1rem 0;
 }
 
+/* Ajustes para el contenedor del logo y el icono */
 .logo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2.5rem;
-  animation: fadeInDown 0.8s ease-out;
-  position: relative;
+  justify-content: center;
+  margin: 2rem auto;
+  width: 100%;
+  text-align: center;
 }
 
 .auth-logo {
@@ -47,88 +82,97 @@
 }
 
 .logo-icon-container {
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(135deg, #FF8B3D, #FF6B00);
-  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  background: var(--auth-gradient);
+  border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 8px 16px rgba(255, 139, 61, 0.3);
+  margin: 0 auto 2rem;
   position: relative;
-  animation: pulseIcon 2s infinite ease-in-out;
+  animation: floatIcon 6s ease-in-out infinite;
+  box-shadow: 0 15px 30px rgba(33, 147, 176, 0.3);
 }
 
 .logo-icon {
-  font-size: 3.5rem;
+  font-size: 4rem;
   color: white;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.logo-icon-container::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  background: linear-gradient(135deg, #FF8B3D, #FF6B00);
-  border-radius: 50%;
-  z-index: -1;
-  opacity: 0.5;
-  filter: blur(8px);
+/* Asegura que el título y subtítulo también estén centrados */
+.brand-title,
+.brand-subtitle {
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .brand-title {
   font-family: 'Teko', sans-serif;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   font-weight: 700;
-  color: var(--ion-color-secondary);
-  margin: 0;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: linear-gradient(45deg, #FF8B3D, #FF6B00);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  color: white;
+  text-shadow: var(--title-shadow);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  animation: titlePulse 2s infinite ease-in-out;
 }
 
 .brand-subtitle {
-  color: var(--ion-color-medium);
+  color: #ffffff;
   font-size: 1.2rem;
   margin-top: 0.5rem;
   text-align: center;
   font-weight: 500;
 }
 
-/* Animaciones para el contenedor principal */
+/* Contenedor mejorado */
 .auth-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: rgba(0, 0, 0, 0.95); /* Más oscuro que antes */
+  position: relative;
+  z-index: 1;
+  background: rgba(15, 15, 15, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 480px;
+  margin: 2rem auto;
   backdrop-filter: blur(10px);
-  border-radius: 20px;
-  box-shadow: var(--form-shadow);
-  animation: slideInDown 0.6s ease-out;
-  min-height: 100%;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(33, 147, 176, 0.2);
 }
 
-/* Animaciones para el formulario */
+/* Ajuste responsive */
+@media (max-width: 991px) {
+  .auth-container {
+    padding: 1rem;
+  }
+}
+
+/* Mejoras en el formulario */
 .auth-form {
-  padding: 2rem;
-  background: rgba(28, 28, 28, 0.95); /* Más oscuro que antes */
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  color: #ffffff;
-  position: relative;
-  animation: fadeScale 0.5s ease-out;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
 .auth-form form {
@@ -144,14 +188,13 @@
   animation: slideInRight 0.3s ease-out forwards;
 }
 
-/* Animaciones para los campos de entrada */
+/* Mejoras en los inputs */
 .custom-input {
-  opacity: 0;
-  transform: translateX(-20px);
-  animation: slideInLeft 0.5s ease-out forwards;
-  --background: transparent;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --highlight-color-focused: #ffffff;
+  --background: rgba(255, 255, 255, 0.05);
+  --border-radius: 12px;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .custom-input:nth-child(2) {
@@ -163,15 +206,19 @@
 }
 
 .custom-input:focus-within {
-  transform: scale(1.02);
-  transition: transform 0.3s ease;
+  --background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(33, 147, 176, 0.5);
+  box-shadow: 0 0 15px rgba(33, 147, 176, 0.2);
 }
 
 /* Estilo para el input */
 .custom-input-field {
-  --color: #ffffff !important;
-  --placeholder-color: rgba(255, 255, 255, 0.6);
-  --placeholder-opacity: 0.7;
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+  --padding-top: 1rem;
+  --padding-bottom: 1rem;
+  font-size: 1.1rem;
+  color: white !important;
 }
 
 /* Estilo para cuando el input tiene texto */
@@ -197,8 +244,8 @@
 
 /* Estilo cuando el input está enfocado */
 .custom-input.item-has-focus ion-label {
-  --color: #FF8B3D !important;
-  color: #FF8B3D !important;
+  --color: #2193b0 !important;
+  color: #2193b0 !important;
   font-weight: 500 !important;
   opacity: 1 !important;
   transform: translateY(-4px) scale(0.85);
@@ -220,83 +267,65 @@
 
 /* Animación para el botón */
 .submit-button {
-  opacity: 0;
-  animation: pulseIn 0.5s ease-out 0.3s forwards;
+  --background: var(--auth-gradient);
+  min-height: 52px;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.3rem !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important; /* Agregado el margen inferior */
+  --border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shine 3s infinite;
 }
 
 /* Animaciones para los botones de toggle */
 .auth-toggle-buttons {
-  margin: 2rem 0;
   display: flex;
-  justify-content: center;
   gap: 1rem;
+  margin: 2rem 0;
 }
 
 .auth-toggle-buttons ion-button {
-  --padding-start: 2rem;
-  --padding-end: 2rem;
-  --border-radius: 25px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
+  --background: var(--auth-gradient);
+  --background-hover: linear-gradient(135deg, #1c7f99 0%, #5bc0db 100%);
+  --border-radius: 12px;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  min-width: 120px;
-}
-
-.auth-toggle-buttons ion-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(255, 139, 61, 0.2);
-  --background: var(--primary-color);
-}
-
-.auth-toggle-buttons ion-button[fill="outline"] {
-  --border-color: var(--ion-color-secondary);
-  --color: var(--ion-color-secondary);
+  flex: 1;
+  height: 48px;
+  transition: all 0.3s ease;
 }
 
 /* Estilos mejorados para los campos de entrada */
 .auth-form ion-item {
-  --background: rgba(45, 45, 45, 0.9);
-  --border-color: rgba(255, 139, 61, 0.3);
-  --border-radius: 15px;
-  --border-width: 2px;
-  --padding-start: 1.5rem;
-  --padding-end: 1.5rem;
-  --inner-padding-end: 1rem;
-  margin-bottom: 1.8rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: visible;
+  --background: var(--input-bg);
+  --border-radius: 12px;
+  --border-width: 1px;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --highlight-height: 0;
+  margin-bottom: 1.5rem;
+  padding: 4px;
 }
 
-.auth-form ion-item::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #FF8B3D, #FF6B00);
-  border-radius: 16px;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.auth-form ion-item:hover,
 .auth-form ion-item:focus-within {
-  --background: rgba(55, 55, 55, 0.95);
-  --border-color: transparent;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(255, 139, 61, 0.2);
-}
-
-.auth-form ion-item:hover::before,
-.auth-form ion-item:focus-within::before {
-  opacity: 1;
+  --background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
 .auth-form ion-label {
@@ -339,7 +368,7 @@
 /* Estilos para los iconos dentro de los campos */
 .auth-form ion-item ion-icon {
   font-size: 1.4rem;
-  color: #FF8B3D;
+  color: #2193b0;
   margin-right: 1rem;
   transition: all 0.3s ease;
 }
@@ -347,12 +376,12 @@
 .auth-form ion-item:hover ion-icon,
 .auth-form ion-item:focus-within ion-icon {
   transform: scale(1.1);
-  color: #FF6B00;
+  color: #6dd5ed;
 }
 
 /* Animación para el focus */
 .auth-form ion-item.item-has-focus ion-label {
-  color: #FF8B3D;
+  color: #2193b0;
   transform: translateY(-4px) scale(0.85);
   transition: all 0.3s ease;
 }
@@ -380,21 +409,39 @@
 }
 
 .auth-form ion-button[type="submit"] {
-  margin-top: 2rem;
-  --background: #FF8B3D;
-  --background-hover: #FF6B00;
-  --border-radius: 12px;
-  --padding-top: 1.25rem;
-  --padding-bottom: 1.25rem;
-  font-family: 'Montserrat', sans-serif;
+  --background: var(--button-gradient);
+  min-height: 52px;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  margin-top: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.auth-form ion-button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.auth-form ion-button[type="submit"]:hover::before {
+  left: 100%;
 }
 
 .auth-form ion-button[type="submit"]:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255, 139, 61, 0.3);
+  box-shadow: 0 12px 30px rgba(33, 147, 176, 0.4);
 }
 
 /* Animación para las etiquetas flotantes */
@@ -478,7 +525,7 @@ ion-item.item-has-focus ion-icon {
 @keyframes fadeScale {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
   to {
     opacity: 1;
@@ -563,12 +610,70 @@ ion-item.item-has-focus ion-icon {
 @keyframes pulseIcon {
   0% {
     transform: scale(1);
+    box-shadow: 0 8px 16px rgba(33, 147, 176, 0.3);
   }
   50% {
     transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(33, 147, 176, 0.4);
   }
   100% {
     transform: scale(1);
+    box-shadow: 0 8px 16px rgba(33, 147, 176, 0.3);
+  }
+}
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes titlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+    text-shadow: 3px 3px 0 #2193b0,
+                 6px 6px 0 rgba(33, 147, 176, 0.5),
+                 -1px -1px 0 #000,
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000;
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 100%;
+  }
+}
+
+/* Animación de fondo mejorada */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -625,13 +730,14 @@ ion-item.item-has-focus ion-icon {
   }
 
   .logo-icon-container {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
     margin-bottom: 1rem;
   }
 
   .logo-icon {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .brand-title {
@@ -783,12 +889,17 @@ ion-item.item-has-focus ion-icon {
 
 /* Mejoras en la orientación horizontal */
 @media (max-height: 600px) and (orientation: landscape) {
+  .auth-page {
+    align-items: flex-start;
+  }
+
   .auth-container {
-    padding: 0.8rem;
+    margin: 1rem auto;
+    padding: 1rem;
   }
 
   .logo-container {
-    margin-bottom: 1rem;
+    margin: 0.5rem auto;
   }
 
   .logo-icon-container {
@@ -806,18 +917,23 @@ ion-item.item-has-focus ion-icon {
   }
 
   .auth-form {
-    padding: 1rem;
+    margin-top: 1rem;
   }
 }
 
 @media (max-width: 768px) {
+  .auth-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
   .auth-logo {
     width: 100px;
     height: 100px;
   }
 
   .brand-title {
-    font-size: 2.8rem;
+    font-size: 3rem;
   }
 
   .brand-subtitle {
@@ -825,8 +941,8 @@ ion-item.item-has-focus ion-icon {
   }
 
   .logo-icon-container {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
   }
 
   .logo-icon {
@@ -835,13 +951,20 @@ ion-item.item-has-focus ion-icon {
 }
 
 @media (max-width: 480px) {
+  .auth-container {
+    margin: 0;
+    border-radius: 0;
+    min-height: 100vh;
+    width: 100%;
+  }
+
   .auth-logo {
     width: 80px;
     height: 80px;
   }
 
   .brand-title {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
   }
 
   .brand-subtitle {
@@ -849,12 +972,43 @@ ion-item.item-has-focus ion-icon {
   }
 
   .logo-icon-container {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
   }
 
   .logo-icon {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+  }
+
+  .auth-form {
+    padding: 1rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .auth-container {
+    margin: 0;
+    padding: 1rem;
+  }
+
+  .logo-icon-container {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+
+  .brand-title {
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .auth-form {
+    padding: 1rem;
   }
 }
 

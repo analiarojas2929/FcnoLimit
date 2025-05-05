@@ -1,16 +1,127 @@
+/* Importar variables de color */
+@import '../theme/variables.css';
+
 .page-container {
   padding: 32px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffaf7b 0%, #d76d77 100%);
+  background: var(--primary-gradient);
+  margin-top: 70px; /* Espacio para el navbar fijo */
 }
 
 .page-container h1 {
-  color: #a13d63;
+  color: var(--neutral-100);
   font-weight: 700;
   margin-bottom: 16px;
+  text-shadow: var(--title-shadow);
 }
 
 .page-container p {
-  color: #444;
+  color: var(--neutral-100);
   font-size: 1.1rem;
+}
+
+.hero-section.jugadores-hero {
+  background: var(--hero-gradient);
+  color: var(--neutral-100);
+  padding: 4rem 0 2rem 0;
+  text-align: center;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.players-section {
+  padding: 2rem 0;
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.player-card {
+  background: var(--light-color);
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(33, 147, 176, 0.1);
+}
+
+.player-card:hover {
+  transform: var(--hover-transform);
+  box-shadow: 0 16px 40px rgba(33, 147, 176, 0.25);
+}
+
+.player-photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 4px 15px rgba(33, 147, 176, 0.2);
+}
+
+.player-name {
+  color: var(--dark-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.player-position {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.player-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(33, 147, 176, 0.1);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.stat-label {
+  color: var(--dark-color);
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 16px;
+  }
+  
+  .hero-section.jugadores-hero {
+    padding: 3rem 1rem 1.5rem;
+  }
+  
+  .players-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .player-photo {
+    width: 80px;
+    height: 80px;
+  }
 }
